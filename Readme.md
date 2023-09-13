@@ -18,7 +18,7 @@
     * Add/Remove Products
     * Add/remove products to cart
     * Add VAT amount of cart
-    * Add Discounts to cart(in %)
+    * Add discounts to cart(in %)
 
 ### 4. Managers:
 

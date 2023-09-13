@@ -23,15 +23,19 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  cart: [
-    {
-      product: {
-        type: Schema.Types.ObjectId,
-        ref: 'Product',
+  cart: {
+    cartItems: [
+      {
+        product: {
+          type: Schema.Types.ObjectId,
+          ref: 'Product',
+        },
+        quantity: Number,
       },
-      quantity: Number,
-    },
-  ],
+    ],
+    vat: Number,
+    discount: Number,
+  },
 });
 
 const User = model('User', userSchema);
