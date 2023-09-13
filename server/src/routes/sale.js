@@ -1,12 +1,14 @@
 import express from 'express';
+
+import { deleteSale, processSale } from '../controllers/sale.js';
 import { verifyAccessToken } from '../middlewares/index.js';
 
 const router = express.Router();
 
 // Process the sale
-router.post('/', verifyAccessToken);
+router.post('/:employeeId', verifyAccessToken, processSale);
 
 // Delete the sale
-router.delete('/:employeeId', verifyAccessToken);
+router.delete('/:employeeId', verifyAccessToken, deleteSale);
 
 export default router;

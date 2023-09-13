@@ -1,21 +1,39 @@
 import express from 'express';
-import { setCache, verifyAccessToken } from '../middlewares/index.js';
+
+import {
+  addProductToDatabase,
+  deleteProductFromCart,
+  deleteProductFromDatabase,
+  getAllProducts,
+  updateCart,
+} from '../controllers/product.js';
+import {
+  setCache,
+  validateCartData,
+  validateProductData,
+  verifyAccessToken,
+} from '../middlewares/index.js';
 
 const router = express.Router();
 
 // Get all products
-router.get('/', verifyAccessToken, setCache);
+router.get('/', verifyAccessToken, setCache, getAllProducts);
 
 // Add Product to DB
-router.post('/', verifyAccessToken);
+router.post('/', verifyAccessToken, validateProductData, addProductToDatabase);
 
 // Remove Product from DB
-router.delete('/:productId', verifyAccessToken);
+router.delete('/:productId', verifyAccessToken, deleteProductFromDatabase);
 
-// Add Product/VAT/Discount to cart
-router.put('/cart', verifyAccessToken);
+// Add/Update Product/VAT/Discount to cart
+router.put(
+  '/cart/:employeeId',
+  verifyAccessToken,
+  validateCartData,
+  updateCart
+);
 
 // Remove Product/VAT/Discount from cart
-router.delete('/cart/:employeeId', verifyAccessToken);
+router.delete('/cart/:employeeId', verifyAccessToken, deleteProductFromCart);
 
 export default router;

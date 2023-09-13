@@ -33,8 +33,14 @@ const userSchema = new Schema({
         quantity: Number,
       },
     ],
-    vat: Number,
-    discount: Number,
+    vat: {
+      type: Number,
+      default: 0,
+    },
+    discount: {
+      type: Number,
+      default: 0,
+    },
   },
 });
 
