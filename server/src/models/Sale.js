@@ -23,6 +23,7 @@ const saleSchema = new Schema({
       },
       price: Number,
       quantity: Number,
+      _id: false,
     },
   ],
   discount: Number,

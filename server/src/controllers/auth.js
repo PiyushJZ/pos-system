@@ -2,6 +2,11 @@ import jwt from 'jsonwebtoken';
 
 import { loginUser } from '../services/authService.js';
 
+/**
+ *
+ * @param {Express.Request} req
+ * @param {Express.Response} res
+ */
 export const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await loginUser(email, password);

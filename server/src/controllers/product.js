@@ -9,8 +9,8 @@ import {
 
 /**
  * Fetch All the products
- * @param {Request} req
- * @param {Response} res
+ * @param {Express.Request} req
+ * @param {Express.Response} res
  */
 export const getAllProducts = async (req, res) => {
   const products = await fetchAllProducts();
@@ -28,8 +28,8 @@ export const getAllProducts = async (req, res) => {
 
 /**
  * Add Products to Product list by admins
- * @param {Request} req
- * @param {Response} res
+ * @param {Express.Request} req
+ * @param {Express.Response} res
  */
 export const addProductToDatabase = async (req, res) => {
   if (req.role !== 'ADMIN') {
@@ -49,8 +49,8 @@ export const addProductToDatabase = async (req, res) => {
 
 /**
  * Remove Products from Product list by admins
- * @param {Request} req
- * @param {Response} res
+ * @param {Express.Request} req
+ * @param {Express.Response} res
  */
 export const deleteProductFromDatabase = async (req, res) => {
   if (req.role !== 'ADMIN') {
@@ -72,8 +72,8 @@ export const deleteProductFromDatabase = async (req, res) => {
 
 /**
  * Update user cart
- * @param {Request} req
- * @param {Response} res
+ * @param {Express.Request} req
+ * @param {Express.Response} res
  */
 export const updateCart = async (req, res) => {
   if (req.employeeId.toString() !== req.params.employeeId) {
@@ -108,12 +108,10 @@ export const updateCart = async (req, res) => {
     return res.status(404).end();
   }
   if (user?.status === 409) {
-    return res
-      .status(409)
-      .json({
-        success: false,
-        message: 'Quantity more then available quantity',
-      });
+    return res.status(409).json({
+      success: false,
+      message: 'Quantity more then available quantity',
+    });
   }
   if (user?.status === 500) {
     return res

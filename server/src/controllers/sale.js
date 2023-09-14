@@ -3,8 +3,8 @@ import { deleteUserCart, getUserById } from '../services/userService.js';
 
 /**
  * Process employee sale
- * @param {Request} req
- * @param {Response} res
+ * @param {Express.Request} req
+ * @param {Express.Response} res
  */
 export const processSale = async (req, res) => {
   const employeeId = req.params.employeeId;
@@ -18,6 +18,10 @@ export const processSale = async (req, res) => {
       success: false,
       message: "You are not authorized to process another user's sale",
     });
+  }
+
+  if (user.cart.cartItems.length === 0) {
+    return res.status(404).json({ success: false, message: 'Cart is empty' });
   }
 
   const sale = await processUserSale(employeeId, user.cart);
@@ -37,8 +41,8 @@ export const processSale = async (req, res) => {
 
 /**
  * Delete employee sale
- * @param {Request} req
- * @param {Response} res
+ * @param {Express.Request} req
+ * @param {Express.Response} res
  */
 export const deleteSale = async (req, res) => {
   const employeeId = req.params.employeeId;
