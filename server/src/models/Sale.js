@@ -4,6 +4,8 @@ const saleSchema = new Schema({
   invoiceNumber: {
     type: Number,
     required: true,
+    unique: true,
+    index: true,
   },
   employeeId: {
     type: Schema.Types.ObjectId,
@@ -19,7 +21,8 @@ const saleSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Product',
       },
-      price: Nummber,
+      price: Number,
+      quantity: Number,
     },
   ],
   discount: Number,
@@ -28,3 +31,6 @@ const saleSchema = new Schema({
     required: true,
   },
 });
+
+const Sale = model('Sale', saleSchema);
+export default Sale;

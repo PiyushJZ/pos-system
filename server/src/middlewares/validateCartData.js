@@ -11,12 +11,20 @@ const cartSchema = z
       .number({ invalid_type_error: 'Discount must be a number' })
       .gte(0, { message: 'Discount cannot be less than 0' })
       .lte(100, { message: 'Discount cannot be more than 100' }),
-    productID: z.string().refine(
-      val => {
-        return Types.ObjectId.isValid(val);
-      },
-      { message: 'Invalid Product ID.' }
-    ),
+    product: z
+      .object({
+        productId: z.string().refine(
+          val => {
+            return Types.ObjectId.isValid(val);
+          },
+          { message: 'Invalid Product ID.' }
+        ),
+        quantity: z
+          .number({ invalid_type_error: 'VAT must be a number' })
+          .gte(0, { message: 'Quantity cannot be less then 0' })
+          .finite({ message: 'Quantity cannot be infinite' }),
+      })
+      .strict(),
   })
   .partial();
 

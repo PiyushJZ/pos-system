@@ -1,10 +1,6 @@
-import { Schema, model } from 'mongoose';
+import { Schema, Types, model } from 'mongoose';
 
 const userSchema = new Schema({
-  employeeId: {
-    type: ObjectId,
-    required: true,
-  },
   name: {
     type: String,
     maxLength: 40,
@@ -31,6 +27,7 @@ const userSchema = new Schema({
           ref: 'Product',
         },
         quantity: Number,
+        _id: false,
       },
     ],
     vat: {

@@ -2,7 +2,6 @@ import express from 'express';
 
 import {
   addProductToDatabase,
-  deleteProductFromCart,
   deleteProductFromDatabase,
   getAllProducts,
   updateCart,
@@ -32,8 +31,5 @@ router.put(
   validateCartData,
   updateCart
 );
-
-// Remove Product/VAT/Discount from cart
-router.delete('/cart/:employeeId', verifyAccessToken, deleteProductFromCart);
 
 export default router;

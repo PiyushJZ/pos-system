@@ -3,11 +3,15 @@ import jwt from 'jsonwebtoken';
 export default async (req, res, next) => {
   const { JWT_SECRET } = process.env;
 
-  const token = req.headers.authorization.split(' ')[1];
-
   try {
+    const token = req.headers.authorization.split(' ')[1];
     const isAuthorized = jwt.verify(token, JWT_SECRET);
-    if (isAuthorized) next();
+    if (isAuthorized) {
+      const { _id, role } = jwt.decode(token);
+      req.employeeId = _id;
+      req.role = role;
+      next();
+    }
   } catch (err) {
     if (err instanceof jwt.JsonWebTokenError) {
       console.log(`=================================`);

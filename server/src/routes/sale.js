@@ -6,7 +6,7 @@ import { verifyAccessToken } from '../middlewares/index.js';
 const router = express.Router();
 
 // Process the sale
-router.post('/:employeeId', verifyAccessToken, processSale);
+router.get('/:employeeId', verifyAccessToken, processSale);
 
 // Delete the sale
 router.delete('/:employeeId', verifyAccessToken, deleteSale);
