@@ -13,11 +13,15 @@
     "typescript": "^5.4.5"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "packageManager": "npm@10.8.2",
   "workspaces": [
-    "apps/*",
+    "apps/pos-client",
+    "apps/pos-server/api-gateway",
+    "apps/pos-server/auth-service",
+    "apps/pos-server/product-service",
+    "apps/pos-server/sale-service",
     "packages/*"
   ]
 }
