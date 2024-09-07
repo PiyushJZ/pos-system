@@ -7,19 +7,19 @@ This is the monorepo for the point of sale system scaffolded using [turborepo](h
 Switch to the correct node version.
 
 ```bash
-  nvm use
+nvm use
 ```
 
 Start with installing the turbo package globally.
 
 ```bash
-  npm install turbo --global
+npm install turbo --global
 ```
 
 Install all dependencies
 
 ```bash
-  npm ci
+npm ci
 ```
 
 ### Build
@@ -27,7 +27,7 @@ Install all dependencies
 To build all apps and packages, run the following command:
 
 ```bash
-  npm build
+npm run build
 ```
 
 ### Develop
@@ -35,7 +35,7 @@ To build all apps and packages, run the following command:
 To develop all apps and packages, run the following command:
 
 ```bash
-  npm dev
+npm run dev
 ```
 
 ## What's inside?
