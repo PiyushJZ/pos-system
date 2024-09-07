@@ -1,17 +1,23 @@
 {
   "name": "@lib/queue",
   "version": "1.0.0",
-  "main": "src/nats.module.ts",
+  "main": "dist/nats.module.js",
+  "types": "dist/nats.module.d.ts",
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "build": "tsc"
   },
   "exports": {
-    ".": "./src/nats.module.ts"
+    ".": {
+      "default": "./dist/nats.module.js",
+      "types": "./src/nats.module.ts"
+    }
   },
   "author": "Piyush Jain",
   "license": "ISC",
   "description": "Nats configuration module to be used by multiple server microservices",
   "dependencies": {
+    "@lib/tsconfig": "*",
     "@nestjs/common": "^10.4.1",
     "@nestjs/microservices": "^10.4.1"
   }
