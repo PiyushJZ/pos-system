@@ -4,8 +4,8 @@
   "main": "dist/nats.module.js",
   "types": "dist/nats.module.d.ts",
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "rimraf .dist && tsc --watch"
   },
   "exports": {
     ".": {
