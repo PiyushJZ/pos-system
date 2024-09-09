@@ -1,9 +1,19 @@
 import { Module } from "@nestjs/common";
-import { MikroOrmModule } from "@mikro-orm/nestjs";
-import mikroOrmConfig from "./mikro-orm.config";
+import { ConfigService } from "@nestjs/config";
+import knex from "knex";
 
 @Module({
-  imports: [MikroOrmModule.forRoot(mikroOrmConfig)],
-  exports: [MikroOrmModule],
+  providers: [
+    {
+      provide: "KnexConnection",
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        const environment = process.env.NODE_ENV || "development";
+        const knexConfig = require("../../knexfile")[environment];
+        return knex(knexConfig);
+      },
+    },
+  ],
+  exports: ["KnexConnection"],
 })
 export class DatabaseModule {}

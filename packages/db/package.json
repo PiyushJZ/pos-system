@@ -5,7 +5,8 @@
   "main": "dist/db.module.js",
   "types": "dist/db.module.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "rimraf ./dist tsc",
+    "dev": "rimraf .dist/ tsc --watch"
   },
   "exports": {
     ".": {
@@ -16,12 +17,14 @@
   "author": "Piyush Jain",
   "license": "ISC",
   "dependencies": {
+    "@lib/config": "^1.0.0",
     "@lib/tsconfig": "*",
-    "@mikro-orm/core": "^6.3.8",
-    "@mikro-orm/nestjs": "^6.0.2",
-    "@mikro-orm/postgresql": "^6.3.8",
     "@nestjs/common": "^10.4.1",
     "@nestjs/config": "^3.2.3",
+    "knex": "^3.1.0",
     "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1"
   }
 }
