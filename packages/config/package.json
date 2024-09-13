@@ -11,6 +11,10 @@
     ".": {
       "default": "./dist/config.module.js",
       "types": "./src/config.module.ts"
+    },
+    "./common": {
+      "default": "./dist/config.js",
+      "types": "./src/config.ts"
     }
   },
   "keywords": [],
