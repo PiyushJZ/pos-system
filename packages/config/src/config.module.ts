@@ -24,4 +24,3 @@ import { config, envValidationSchema } from "./config";
   ],
 })
 export class ConfigModule {}
-export { config as config } from "./config";

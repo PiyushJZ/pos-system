@@ -1,14 +1,13 @@
 import type { Knex } from "knex";
-import { config as Config } from "@lib/config";
-// Update with your config settings.
+import { CONFIG } from "@lib/config/common";
 
 const config: { [key: string]: Knex.Config } = {
   development: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
+      database: CONFIG.DB.DB_NAME,
+      user: CONFIG.DB.DB_USER,
+      password: CONFIG.DB.DB_PASSWORD,
     },
     pool: {
       min: 2,
@@ -16,15 +15,19 @@ const config: { [key: string]: Knex.Config } = {
     },
     migrations: {
       tableName: "knex_migrations",
+      directory: "./migrations",
+    },
+    seeds: {
+      directory: "./seeders",
     },
   },
 
   test: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
+      database: CONFIG.DB.DB_NAME,
+      user: CONFIG.DB.DB_USER,
+      password: CONFIG.DB.DB_PASSWORD,
     },
     pool: {
       min: 2,
@@ -32,15 +35,19 @@ const config: { [key: string]: Knex.Config } = {
     },
     migrations: {
       tableName: "knex_migrations",
+      directory: "./migrations",
+    },
+    seeds: {
+      directory: "./seeders",
     },
   },
 
   staging: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
+      database: CONFIG.DB.DB_NAME,
+      user: CONFIG.DB.DB_USER,
+      password: CONFIG.DB.DB_PASSWORD,
     },
     pool: {
       min: 2,
@@ -48,15 +55,19 @@ const config: { [key: string]: Knex.Config } = {
     },
     migrations: {
       tableName: "knex_migrations",
+      directory: "./migrations",
+    },
+    seeds: {
+      directory: "./seeders",
     },
   },
 
   production: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
+      database: CONFIG.DB.DB_NAME,
+      user: CONFIG.DB.DB_USER,
+      password: CONFIG.DB.DB_PASSWORD,
     },
     pool: {
       min: 2,
@@ -64,6 +75,10 @@ const config: { [key: string]: Knex.Config } = {
     },
     migrations: {
       tableName: "knex_migrations",
+      directory: "./migrations",
+    },
+    seeds: {
+      directory: "./seeders",
     },
   },
 };

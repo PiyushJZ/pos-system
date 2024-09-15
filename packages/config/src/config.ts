@@ -39,3 +39,5 @@ export const config = (): EnvType => ({
   CACHE: {},
   QUEUE: {},
 });
+
+export const CONFIG = config();

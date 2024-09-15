@@ -5,7 +5,7 @@
   "main": "dist/db.module.js",
   "types": "dist/db.module.d.ts",
   "scripts": {
-    "build": "rimraf ./dist tsc",
+    "build": "tsc",
     "dev": "rimraf .dist/ tsc --watch"
   },
   "exports": {
